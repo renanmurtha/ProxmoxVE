@@ -1,0 +1,24 @@
+-- Acesse o ProxMox via SSH
+-- Access ProxMox via SSH
+
+--- Para localizar todos os discos no servidor use fdisk -l
+--- To find all disks on the server use fdisk -l
+
+### ADD disco sem perder o backup
+### ADD disk without losing backup
+
+#Procurar quem é o disco, usando fdisk -l;
+#Find who the disk is, using fdisk -l;
+  
+  -- Descobrindo que é o /dev/sdXXX
+  -- Finding out which is /dev/sdXXX
+
+#Você vai criar uma pasta dentro do mnt:
+#You will create a folder inside mnt:
+  
+  mkdir /mnt/backup
+
+# após isso vc vai montar ele de forma manual:
+# after that you will assemble it manually:
+  
+  mount  /dev/sdXX /mnt/backup
