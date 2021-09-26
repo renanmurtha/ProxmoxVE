@@ -1,0 +1,42 @@
+-- No passo 3 altere "you@example.com:password" por seu e-mail e senha separados por ":"; ficando assim: seu_email@gmail.com:senha 
+-- In step 3 change "you@example.com:password" to your email and password separated by ":"; looking like this: your_email@gmail.com:password
+
+-- No passo 9 Substitua you@example.com pelo seu e-mail no seguinte código e teste o envio de e-mail.
+-- In step  9 Replace you@example.com with your email in the following code and test sending mail
+
+
+1 -  install postfix and mailutils:
+apt-get install postfix mailutils libsasl2-2 ca-certificates libsasl2-modules -y
+
+2 - Create your password file with: 
+nano /etc/postfix/sasl_passwd
+
+3 - Populate the password file. Example: 
+[smtp.gmail.com]:587 you@example.com:password
+
+4 - Secure the file by running:
+chmod 600 /etc/postfix/sasl_passwd
+
+5 - Replace the contents of the config file by running:
+nano /etc/postfix/main.cf
+
+6 - Place the following in the file:
+
+relayhost = [smtp.gmail.com]:587 
+smtp_use_tls = yes 
+smtp_sasl_auth_enable = yes 
+smtp_sasl_security_options = 
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd 
+smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
+
+
+7 - Encode password file by running:
+postmap /etc/postfix/sasl_passwd
+
+8 - Restart postfix:
+systemctl restart postfix.service
+
+9 - Replace you@example.com with your email in the following code and test sending mail: 
+echo "Test mail from postfix" | mail -s "Test Postfix" you@example.com
+ 
+ Fonte: https://serverfault.com/questions/510251/postfix-gmail-authentication-required-error
