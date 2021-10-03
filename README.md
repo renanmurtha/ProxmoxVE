@@ -12,7 +12,3 @@ ProxMox – [Downloads](https://proxmox.com/en/downloads/category/iso-images-pve
 ProxMox – [Documentação](https://proxmox.com/en/downloads/category/documentation-pvee)</br>
 Home Assistant no ProxMox – [Downloads](https://www.home-assistant.io/installation/alternative)</br>
 Home Assistant – [Blog](https://www.home-assistant.io/blog/)
-
-
-[https://github.com/yourname/github-link](https://github.com/dbader/)
-
